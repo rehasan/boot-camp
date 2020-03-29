@@ -17,3 +17,4 @@ COPY . /boot-camp/client
 ENV PORT 3000
 
 EXPOSE 3000
+EXPOSE 9220

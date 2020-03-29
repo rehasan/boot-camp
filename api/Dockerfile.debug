@@ -35,7 +35,7 @@ COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /boot-camp/api
 
 RUN ls -lrt /boot-camp/api/lib/*
 
-ENTRYPOINT ["java", "-cp", "/boot-camp/api:/boot-camp/api/lib/*", "com.tw.api.ApiApplication"]
+ENTRYPOINT ["java", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=9221", "-cp", "/boot-camp/api:/boot-camp/api/lib/*", "com.tw.api.ApiApplication"]
 
 HEALTHCHECK --interval=1m --timeout=3s CMD wget -q -T 3 -s http://localhost:8080/actuator/health/ || exit 1
 
