@@ -1,5 +1,4 @@
-FROM openjdk:8-jdk-alpine
-
+FROM openjdk:8-jre-alpine
 
 ENV PORT 8080
 
@@ -10,7 +9,6 @@ WORKDIR /boot-camp/api
 
 # Bundle app source
 COPY . /boot-camp/api
-
 CMD ["/bin/bash"]
 
 
