@@ -1,0 +1,53 @@
+version: "2"
+volumes:
+  db:
+
+services:
+
+  mongodb:
+    image: mongo:4.0.6-xenial
+    ## Example env variables
+    #    environment:
+    #      - MONGO_INITDB_ROOT_USERNAME=root
+    #      - MONGO_INITDB_ROOT_PASSWORD=MongoSecret
+    volumes:
+      - db:/data/db
+    ports:
+      - "27017:27017"
+
+  client:
+    environment:
+      - REACT_APP_API_END_POINT_URL=http://localhost:8080/v1
+      - NODE_ENV=development
+    build:
+      context: client
+    ports:
+      - "3000:3000"
+      - "9220:9220"
+    depends_on:
+      - api
+    entrypoint:
+      - /bin/bash
+      - -c
+    command:
+      - "npm start"
+    volumes:
+      - ./client:/boot-camp/client
+      - /boot-camp/client/node_modules/
+    env_file:
+      - .env
+
+  api:
+    build:
+      context: api
+    ports:
+      - "8080:8080"
+      - "9221:9221"
+    depends_on:
+      - mongodb
+    command:
+      - "java -jar api.jar"
+    volumes:
+      - ./api:/boot-camp/api
+    env_file:
+      - .env
