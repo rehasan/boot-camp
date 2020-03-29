@@ -1,6 +1,5 @@
 FROM node:13.12.0-stretch
 
-
 WORKDIR /boot-camp/client
 
 # Update packages and install dependency packages for services
@@ -15,7 +14,6 @@ RUN cd /boot-camp/client; npm install --production; npm audit fix
 
 COPY . /boot-camp/client
 
-ENV NODE_ENV local
 ENV PORT 3000
 
 EXPOSE 3000

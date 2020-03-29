@@ -1,6 +1,5 @@
 FROM node:10-stretch
 
-
 ENV PORT 3000
 ENV NODE_HEAPDUMP_OPTIONS nosignal
 

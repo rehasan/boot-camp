@@ -2,7 +2,6 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "main": "dist/index.js",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -14,8 +13,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "debug": "react-scripts --inspect-brk=0.0.0.0:9220 test",
-    "debug:brk": "react-scripts --inspect-brk=0.0.0.0:9220 test",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
