@@ -1,7 +1,7 @@
 package com.tw.api.service;
 
 import com.tw.api.exception.ErrorCode;
-import com.tw.api.exception.NotFoundException;
+import com.tw.api.exception.NotFoundBaseException;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
@@ -15,7 +15,7 @@ public abstract class AbstractService<T, Id> implements BaseService<T, Id> {
         Optional<T> aTable = getRepository().findById(id);
 
         return aTable
-                .orElseThrow(() -> new NotFoundException("Cannot find entity by id:" + id, ErrorCode.OBJECT_NOT_FOUND));
+                .orElseThrow(() -> new NotFoundBaseException("Cannot find entity by id:" + id, ErrorCode.OBJECT_NOT_FOUND));
     }
 
     @Override
