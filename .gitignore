@@ -1,6 +1,7 @@
 HELP.md
 
 ### IntelliJ IDEA ###
+out/
 .idea
 *.iws
 *.iml
