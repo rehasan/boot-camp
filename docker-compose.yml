@@ -5,10 +5,8 @@ volumes:
 services:
 
   mongodb:
-    image: mongo:4.0.6-xenial
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=MongoSecret
+    image: mongo
+    restart: always
     volumes:
       - db:/data/db
     ports:
