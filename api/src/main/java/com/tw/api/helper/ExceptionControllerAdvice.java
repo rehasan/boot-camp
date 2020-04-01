@@ -16,10 +16,10 @@ import java.io.IOException;
 @ControllerAdvice
 public class ExceptionControllerAdvice {
 
-    @ExceptionHandler(AppRuntimeBaseException.class)
+    @ExceptionHandler(ApiRuntimeBaseException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ResponseBody
-    public void runtimeException(AppRuntimeBaseException e, HttpServletResponse response) throws IOException {
+    public void runtimeException(ApiRuntimeBaseException e, HttpServletResponse response) throws IOException {
         writeResponse(response, HttpServletResponse.SC_NOT_FOUND, e);
     }
 
@@ -28,7 +28,7 @@ public class ExceptionControllerAdvice {
     @ResponseBody
     public void noHandlerFoundException(NoHandlerFoundException e, HttpServletResponse response) throws IOException {
         writeResponse(response, HttpServletResponse.SC_NOT_FOUND,
-                new AppBaseException(e.getMessage(), ErrorCode.NO_HANDLER_FOUND));
+                new ApiBaseException(e.getMessage(), ErrorCode.NO_HANDLER_FOUND));
     }
 
     @ExceptionHandler(Exception.class)
@@ -36,7 +36,7 @@ public class ExceptionControllerAdvice {
     @ResponseBody
     public void exceptions(Exception e, HttpServletResponse response) throws IOException {
         writeResponse(response, HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
-                new AppBaseException(e.getMessage(), ErrorCode.SERVER_EXCEPTION));
+                new ApiBaseException(e.getMessage(), ErrorCode.SERVER_EXCEPTION));
     }
 
     private void writeResponse(HttpServletResponse response, int code, BaseException e) throws IOException {

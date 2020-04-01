@@ -1,6 +1,7 @@
 package com.tw.api.controller;
 
 import com.tw.api.entity.Book;
+import com.tw.api.repository.ApiRepository;
 import com.tw.api.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -29,5 +30,11 @@ public class BookController {
     public @ResponseBody
     Book getById(@PathVariable Long id) {
         return service.getById(id);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody
+    Book create(@RequestBody Book book) {
+        return service.create(book);
     }
 }

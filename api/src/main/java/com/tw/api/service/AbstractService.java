@@ -1,21 +1,22 @@
 package com.tw.api.service;
 
 import com.tw.api.exception.ErrorCode;
-import com.tw.api.exception.NotFoundBaseException;
-import org.springframework.data.repository.CrudRepository;
+import com.tw.api.exception.RecordNotFoundBaseException;
+import com.tw.api.repository.ApiJpaRepository;
+import com.tw.api.repository.ApiRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 public abstract class AbstractService<T, Id> implements BaseService<T, Id> {
-    protected abstract CrudRepository<T, Id> getRepository();
+    protected abstract ApiRepository<T, Id> getRepository();
 
     @Override
     public T getById(Id id) {
         Optional<T> aTable = getRepository().findById(id);
 
         return aTable
-                .orElseThrow(() -> new NotFoundBaseException("Cannot find entity by id:" + id, ErrorCode.OBJECT_NOT_FOUND));
+                .orElseThrow(() -> new RecordNotFoundBaseException("Cannot find entity by id:" + id, ErrorCode.OBJECT_NOT_FOUND));
     }
 
     @Override

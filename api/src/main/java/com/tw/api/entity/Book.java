@@ -13,7 +13,6 @@ import javax.persistence.Table;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Book extends AbstractEntity {
 
-    @Column(name = "author-name")
     protected String authorName;
 
     public void setAuthorName(String authorName) {

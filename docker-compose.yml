@@ -5,17 +5,32 @@ volumes:
 services:
 
   mongodb:
-    image: mongo
+    image: mongo:latest
     restart: always
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: root
+#      MONGO_INITDB_ROOT_PASSWORD: root
     volumes:
       - db:/data/db
     ports:
       - "27017:27017"
 
+  postgresdb:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_DB: boot-camp
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    volumes:
+      - db:/data/db
+    ports:
+      - "5432:5432"
+
   client:
     environment:
-      - REACT_APP_API_END_POINT_URL=http://localhost:8080/v1
-      - NODE_ENV=development
+      REACT_APP_API_END_POINT_URL: http://localhost:8080/v1
+      NODE_ENV: development
     build:
       context: client
     ports:
@@ -43,5 +58,6 @@ services:
       - "9221:9221"
     depends_on:
       - mongodb
+      - postgresdb
     env_file:
       - .env

@@ -1,7 +1,5 @@
 package com.tw.api.entity;
 
-import org.springframework.data.annotation.Id;
-
 import javax.persistence.*;
 
 @MappedSuperclass
