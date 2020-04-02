@@ -2,7 +2,7 @@
 
 1. `Spring Boot`
 2. `Mongo`
-3. `Spring Hibernate/JPA`
+3. `Spring Hibernate/JPA Postgres`
 4. `Rest Api`
 5. `Data Transfer Object`
 6. `React`
