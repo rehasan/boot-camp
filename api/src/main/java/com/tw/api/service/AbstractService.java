@@ -2,7 +2,6 @@ package com.tw.api.service;
 
 import com.tw.api.exception.ErrorCode;
 import com.tw.api.exception.RecordNotFoundBaseException;
-import com.tw.api.repository.ApiJpaRepository;
 import com.tw.api.repository.ApiRepository;
 
 import java.util.List;

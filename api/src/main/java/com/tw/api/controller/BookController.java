@@ -1,7 +1,6 @@
 package com.tw.api.controller;
 
 import com.tw.api.entity.Book;
-import com.tw.api.repository.ApiRepository;
 import com.tw.api.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

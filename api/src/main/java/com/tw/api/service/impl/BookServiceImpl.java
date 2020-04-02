@@ -6,8 +6,6 @@ import com.tw.api.repository.BookRepository;
 import com.tw.api.service.AbstractService;
 import com.tw.api.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 @Service
