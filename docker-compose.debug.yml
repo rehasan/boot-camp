@@ -1,6 +1,7 @@
 version: "2"
 volumes:
-  db:
+  db-mongodb:
+  db-postgresdb:
 
 services:
 
@@ -11,7 +12,7 @@ services:
 #      MONGO_INITDB_ROOT_USERNAME: root
 #      MONGO_INITDB_ROOT_PASSWORD: root
     volumes:
-      - db:/data/db
+      - db-mongodb:/data/db
     ports:
       - "27017:27017"
 
@@ -23,7 +24,7 @@ services:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
     volumes:
-      - db:/data/db
+      - db-postgresdb:/var/lib/postgresql/data
     ports:
       - "5432:5432"
 

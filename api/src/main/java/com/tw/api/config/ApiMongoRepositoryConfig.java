@@ -14,7 +14,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @ConditionalOnProperty(name = "db.dialect", havingValue = "mongo", matchIfMissing = true)
 public class ApiMongoRepositoryConfig {
 
-/*    private final ApiMongoRepository apiMongoRepository;
+    private final ApiMongoRepository apiMongoRepository;
 
     @Autowired
     public ApiMongoRepositoryConfig(ApiMongoRepository apiMongoRepository) {
@@ -24,5 +24,5 @@ public class ApiMongoRepositoryConfig {
     @Bean
     public ApiRepository apiMongoRepository() {
         return apiMongoRepository;
-    }*/
+    }
 }
