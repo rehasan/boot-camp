@@ -1,4 +1,4 @@
-package com.tw.api.repository;
+package com.tw.api.repository.base;
 
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
