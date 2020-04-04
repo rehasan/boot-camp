@@ -44,7 +44,7 @@ public class ApiJpaRepositoryConfig {
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(dataSourcenotDefault());
+        em.setDataSource(dataSourceDefault());
         em.setPackagesToScan(ApiJpaRepository.class.getPackage().getName(), ApiJpaRepository.class.getPackage().getName());
         em.setPersistenceUnitName("notDefaultDb");
 
@@ -55,7 +55,7 @@ public class ApiJpaRepositoryConfig {
     }
 
     @Bean
-    public DataSource dataSourcenotDefault() {
+    public DataSource dataSourceDefault() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
         dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
