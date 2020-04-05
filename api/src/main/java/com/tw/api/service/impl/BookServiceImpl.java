@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class BookServiceImpl extends AbstractService<Book, Long> implements BookService {
 
-    protected BookRepository repository;
+    protected final BookRepository repository;
 
     @Autowired
     public BookServiceImpl(BookRepository repository) {
