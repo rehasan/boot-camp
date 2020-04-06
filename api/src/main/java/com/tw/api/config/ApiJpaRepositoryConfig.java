@@ -1,3 +1,4 @@
+/*
 package com.tw.api.config;
 
 import com.tw.api.repository.base.ApiJpaRepository;
@@ -71,3 +72,4 @@ public class ApiJpaRepositoryConfig {
         return dataSource;
     }
 }
+*/

@@ -1,7 +1,7 @@
 package com.tw.api.repository;
 
 import com.tw.api.entity.Book;
-import com.tw.api.repository.base.ApiRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface BookRepository extends ApiRepository<Book, Long> {
+public interface BookRepository extends CrudRepository<Book, Long> {
 }

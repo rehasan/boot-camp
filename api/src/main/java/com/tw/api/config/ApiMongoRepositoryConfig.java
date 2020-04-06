@@ -10,8 +10,10 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 @Configuration
 @ConditionalOnProperty(name = "db.dialect", havingValue = "mongo", matchIfMissing = true)
-@EnableMongoRepositories(repositoryBaseClass = ApiMongoRepository.class,
-        repositoryFactoryBeanClass = InheritanceAwareMongoRepositoryFactoryBean.class)
+/*@EnableMongoRepositories(repositoryBaseClass = ApiMongoRepository.class,
+        repositoryFactoryBeanClass = InheritanceAwareMongoRepositoryFactoryBean.class)*/
+
+@EnableMongoRepositories("com.tw.api.repository")
 public class ApiMongoRepositoryConfig {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ApiMongoRepositoryConfig.class);
