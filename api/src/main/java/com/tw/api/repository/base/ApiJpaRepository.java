@@ -9,7 +9,6 @@ import javax.persistence.EntityManager;
 @NoRepositoryBean
 public class ApiJpaRepository<T, Id>
         extends SimpleJpaRepository<T, Id> implements ApiRepository<T, Id> {
-
     public ApiJpaRepository(Class<T> domainClass, EntityManager entityManager) {
         super(domainClass, entityManager);
     }
