@@ -1,4 +1,4 @@
-package com.tw.api.repository.base;
+package com.tw.api.repository;
 
 import org.springframework.data.repository.CrudRepository;
 

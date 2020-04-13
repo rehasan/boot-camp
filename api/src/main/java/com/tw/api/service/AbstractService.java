@@ -2,13 +2,13 @@ package com.tw.api.service;
 
 import com.tw.api.exception.ErrorCode;
 import com.tw.api.exception.RecordNotFoundBaseException;
-import com.tw.api.repository.base.ApiRepository;
+import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 public abstract class AbstractService<T, Id> implements BaseService<T, Id> {
-    protected abstract ApiRepository<T, Id> getRepository();
+    protected abstract CrudRepository<T, Id> getRepository();
 
     @Override
     public T getById(Id id) {

@@ -2,6 +2,8 @@
   <dictionary name="rashdul.ehasan">
     <words>
       <w>openapi</w>
+      <w>postgre</w>
+      <w>postgresql</w>
     </words>
   </dictionary>
 </component>
