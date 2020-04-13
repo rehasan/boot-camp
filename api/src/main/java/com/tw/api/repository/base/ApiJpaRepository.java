@@ -1,6 +1,6 @@
-/*
 package com.tw.api.repository.base;
 
+import com.tw.api.repository.ApiRepository;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
@@ -14,4 +14,3 @@ public class ApiJpaRepository<T, Id>
         super(domainClass, entityManager);
     }
 }
-*/
