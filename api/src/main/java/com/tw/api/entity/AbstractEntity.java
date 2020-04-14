@@ -1,5 +1,7 @@
 package com.tw.api.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @MappedSuperclass
@@ -9,6 +11,11 @@ public class AbstractEntity implements BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
+    @JsonIgnore
+    @Transient
+    @org.springframework.data.annotation.Transient
+    protected boolean isNew;
+
     @Column(nullable = false, unique = true)
     protected String name;
 
@@ -17,7 +24,11 @@ public class AbstractEntity implements BaseEntity {
     }
 
     public Long getId() {
-        return id;
+        return this.id;
+    }
+
+    public boolean getIsNew() {
+        return this.isNew = (this.id == null);
     }
 
     public void setName(String name) {

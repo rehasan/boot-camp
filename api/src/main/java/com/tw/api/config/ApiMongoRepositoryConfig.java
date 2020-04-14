@@ -3,6 +3,7 @@ package com.tw.api.config;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.tw.api.helper.ApiMongoRepositoryFactoryBean;
+import com.tw.api.repository.base.ApiMongoRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,6 +16,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @Configuration
 @ConditionalOnProperty(prefix = "spring", name = "db.dialect", havingValue = "mongo", matchIfMissing = true)
 @EnableMongoRepositories(
+        basePackageClasses = ApiMongoRepository.class,
         repositoryFactoryBeanClass = ApiMongoRepositoryFactoryBean.class,
         basePackages = "com.tw.api.repository")
 public class ApiMongoRepositoryConfig {
@@ -27,22 +29,21 @@ public class ApiMongoRepositoryConfig {
     private static final Logger LOGGER = LoggerFactory.getLogger(ApiMongoRepositoryConfig.class);
 
     public ApiMongoRepositoryConfig() {
-        this.mongoClientURI = new MongoClientURI(uri);
         LOGGER.info("Repository Configuration: " + ApiMongoRepositoryConfig.class);
     }
 
-    @Bean
+    @Bean(name = "mongoClient")
     public MongoClient mongoClient() {
-        return new MongoClient(new MongoClientURI(uri));
+        return new MongoClient(this.getUri());
     }
 
-    @Bean
-    public String getMappingBasePackage() {
-        return "com.tw.api";
-    }
-
-    @Bean
+    @Bean(name = "mongoTemplate")
     public MongoTemplate mongoTemplate() {
-        return new MongoTemplate(mongoClient(), this.mongoClientURI.getDatabase());
+        return new MongoTemplate(mongoClient(), this.getUri().getDatabase());
+    }
+
+    private MongoClientURI getUri() {
+        return this.mongoClientURI == null
+                ? this.mongoClientURI = new MongoClientURI(uri) : this.mongoClientURI;
     }
 }
