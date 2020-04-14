@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @Configuration
@@ -18,17 +19,30 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
         basePackages = "com.tw.api.repository")
 public class ApiMongoRepositoryConfig {
 
+    private MongoClientURI mongoClientURI;
+
     @Value("${spring.data.mongodb.uri}")
     private String uri;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ApiMongoRepositoryConfig.class);
 
     public ApiMongoRepositoryConfig() {
+        this.mongoClientURI = new MongoClientURI(uri);
         LOGGER.info("Repository Configuration: " + ApiMongoRepositoryConfig.class);
     }
 
     @Bean
     public MongoClient mongoClient() {
         return new MongoClient(new MongoClientURI(uri));
+    }
+
+    @Bean
+    public String getMappingBasePackage() {
+        return "com.tw.api";
+    }
+
+    @Bean
+    public MongoTemplate mongoTemplate() {
+        return new MongoTemplate(mongoClient(), this.mongoClientURI.getDatabase());
     }
 }

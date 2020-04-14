@@ -2,12 +2,12 @@ package com.tw.api.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "book")
+@Entity(name = "book")
+@Document(collection = "book")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Book extends AbstractEntity {
