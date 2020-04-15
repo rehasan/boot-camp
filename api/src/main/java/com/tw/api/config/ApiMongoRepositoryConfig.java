@@ -16,7 +16,6 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @Configuration
 @ConditionalOnProperty(prefix = "spring", name = "db.dialect", havingValue = "mongo", matchIfMissing = true)
 @EnableMongoRepositories(
-        basePackageClasses = ApiMongoRepository.class,
         repositoryFactoryBeanClass = ApiMongoRepositoryFactoryBean.class,
         basePackages = "com.tw.api.repository")
 public class ApiMongoRepositoryConfig {

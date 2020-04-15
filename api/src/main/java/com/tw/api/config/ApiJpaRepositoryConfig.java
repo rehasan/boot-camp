@@ -1,6 +1,6 @@
 package com.tw.api.config;
 
-import com.tw.api.repository.base.ApiJpaRepository;
+import com.tw.api.helper.ApiJpaRepositoryFactoryBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -22,8 +22,8 @@ import java.util.Properties;
 @Configuration
 @ConditionalOnProperty(prefix = "spring", name = "db.dialect", havingValue = "postgres")
 @EnableJpaRepositories(
+        repositoryFactoryBeanClass = ApiJpaRepositoryFactoryBean.class,
         entityManagerFactoryRef = "entityManagerFactory",
-        basePackageClasses = ApiJpaRepository.class,
         basePackages = "com.tw.api.repository")
 public class ApiJpaRepositoryConfig {
 

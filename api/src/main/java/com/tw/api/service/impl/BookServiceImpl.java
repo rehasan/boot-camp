@@ -1,11 +1,11 @@
 package com.tw.api.service.impl;
 
 import com.tw.api.entity.Book;
+import com.tw.api.repository.ApiRepository;
 import com.tw.api.repository.BookRepository;
 import com.tw.api.service.AbstractService;
 import com.tw.api.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,7 +19,7 @@ public class BookServiceImpl extends AbstractService<Book, Long> implements Book
     }
 
     @Override
-    protected CrudRepository<Book, Long> getRepository() {
+    protected ApiRepository<Book, Long> getRepository() {
         return repository;
     }
 
