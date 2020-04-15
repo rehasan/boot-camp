@@ -20,9 +20,9 @@ https://github.com/er310/boot-camp/blob/master/api/src/main/resources/applicatio
 
 ## App Links
 
-http://localhost:3000
+Client (React): http://localhost:3000
 
-http://localhost:8080/v1/swagger-ui/index.html
+Api (Spring Boot): http://localhost:8080/v1/swagger-ui/index.html
 
 ## Switching Datasources between Postgres and Mongo
 
