@@ -3,13 +3,14 @@ package com.tw.api.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @MappedSuperclass
 public class AbstractEntity implements BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    protected UUID id;
 
     @JsonIgnore
     @Transient
@@ -19,11 +20,11 @@ public class AbstractEntity implements BaseEntity {
     @Column(nullable = false, unique = true)
     protected String name;
 
-    public void setId(Long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
-    public Long getId() {
+    public UUID getId() {
         return this.id;
     }
 

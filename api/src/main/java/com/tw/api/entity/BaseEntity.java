@@ -1,9 +1,11 @@
 package com.tw.api.entity;
 
-public interface BaseEntity {
-    void setId(Long id);
+import java.util.UUID;
 
-    Long getId();
+public interface BaseEntity {
+    void setId(UUID id);
+
+    UUID getId();
 
     boolean getIsNew();
 

@@ -6,6 +6,8 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.repository.query.MongoEntityInformation;
 import org.springframework.data.mongodb.repository.support.SimpleMongoRepository;
 
+import java.util.UUID;
+
 public class ApiMongoRepository<T extends BaseEntity, Id> extends SimpleMongoRepository<T, Id> implements ApiRepository<T, Id> {
     public ApiMongoRepository(MongoEntityInformation<T, Id> metadata, MongoOperations mongoOperations) {
         super(metadata, mongoOperations);
@@ -14,12 +16,14 @@ public class ApiMongoRepository<T extends BaseEntity, Id> extends SimpleMongoRep
     @Override
     public <S extends T> S insert(S entity) {
         this.generateId(entity);
+        
         return super.insert(entity);
     }
 
     @Override
     public <S extends T> S save(S entity) {
         this.generateId(entity);
+
         return super.save(entity);
     }
 
@@ -27,6 +31,7 @@ public class ApiMongoRepository<T extends BaseEntity, Id> extends SimpleMongoRep
         if (!entity.getIsNew()) {
             return;
         }
-        //entity.setId(1.00f);
+
+        entity.setId(UUID.randomUUID());
     }
 }
